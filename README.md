@@ -31,10 +31,34 @@ Django Backoffice is an application Django to easier create backoffice dashboard
   
 - Access `http://127.0.0.1:8000/backoffice/login/` to enter backoffice page.
 
+## How to Use
+- create file `backoffice.py` on your app
+- Then write
+#### Simple register
+```python
+from djbackoffice.core import backoffice
+from author.models import Author
 
+backoffice.register(Author)
+```
+#### Advanced register
+```python
+from djbackoffice.core import backoffice, BackofficeOptions
+from djbackoffice.decorators import register
+from author.models import Author
+
+
+@register(Author)
+class AuthorOption(BackofficeOptions):
+    list_display = ('name', 'email', 'address', 'phone_number')
+    search_fields = ('name', 'email')
+    form_column_style = 2
+    crud_mode = 'cru'
+    list_per_page = 50
+```
 
 ### Thanks!
-
+- https://github.com/zuramai/mazer: Mazer Dashboard Template
 
 ### For Contributor
 - clone project
