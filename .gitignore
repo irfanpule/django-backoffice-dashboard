@@ -1,0 +1,46 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+sdist/
+tmp/
+*.egg-info/
+.installed.cfg
+*.egg
+*.dist-info
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.tox/
+.tmp/
+ghostdriver.log
+
+# Editor configs
+.vscode
+.project
+.pydevproject
+.python-version
+.ruby-version
+.settings/
+
+## generic files to ignore
+*~
+*.lock
+
+## sqlite
+*.sqlite3
+.idea/
+
+## envirotment
+env/
+venv/

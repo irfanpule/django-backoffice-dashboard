@@ -1,0 +1,2 @@
+django-tables2==2.5.3
+sweetify==2.3.1

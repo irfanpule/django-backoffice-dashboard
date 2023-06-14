@@ -1,0 +1,4 @@
+Django==4.2.2
+setuptools==65.5.1
+twine==4.0.1
+black==22.10.0
