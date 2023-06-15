@@ -33,7 +33,12 @@
                                 <ul class="submenu" style="display: none;">
                                     {% for model in app.models %}
                                         <li class="submenu-item">
-                                            <a href="{{ model.admin_url }}">{{ model.name }}</a>
+                                            <a href="{{ model.admin_url }}">
+                                                <span class="d-inline-flex">
+                                                    <i class="bi {{ model.icon_menu }} p-0 me-1"></i>
+                                                    {{ model.name }}
+                                                </span>
+                                            </a>
                                         </li>
                                     {% endfor %}
                                 </ul>

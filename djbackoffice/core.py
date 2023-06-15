@@ -26,6 +26,7 @@ class BackofficeOptions:
     # crud_mode to select func Create, Read, Update, Delete
     # default option is `crud`, and `r` or read mode can't disable
     crud_mode = 'crud'
+    icon_menu = ''
 
     def __init__(self, model, opts_class):
         self.model = model
@@ -236,6 +237,7 @@ class Backoffice(object):
                 'name': capfirst(model._meta.verbose_name_plural),
                 'object_name': model._meta.object_name,
                 'admin_url': reverse('djbackoffice:%s_%s_list' % info),
+                'icon_menu': opts.icon_menu
             }
 
             if app_label in app_dict:

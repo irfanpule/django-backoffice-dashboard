@@ -50,11 +50,24 @@ from author.models import Author
 
 @register(Author)
 class AuthorOption(BackofficeOptions):
+    # To select the fields that will appear in the index view 
     list_display = ('name', 'email', 'address', 'phone_number')
+    
+    # To select the field to be the search key
     search_fields = ('name', 'email')
+    
+    # To select a form layout
     form_column_style = 2
+    
+    # To select CRUD mode. The default Read mode cannot be disabled
     crud_mode = 'cru'
+    
+    # To set how much data appears in the index view
     list_per_page = 50
+    
+    # To set the icon that appears on the menu
+    # icon using https://icons.getbootstrap.com
+    icon_menu = "bi-door-open-fill"
 ```
 
 ## Thanks!

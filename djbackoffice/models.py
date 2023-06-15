@@ -8,8 +8,13 @@ from djbackoffice.settings import DJBACKOFFICE_SHOW_USER_DJANGO
 class UserBackofficeOpts(BackofficeOptions):
     list_display = ('username', 'first_name', 'last_name', 'email', 'is_superuser', 'is_staff', 'is_active')
     search_fields = ('username', 'first_name', 'last_name', 'email',)
+    icon_menu = "bi-person-fill"
+
+
+class GroupBackofficeOpts(BackofficeOptions):
+    icon_menu = "bi-people-fill"
 
 
 if DJBACKOFFICE_SHOW_USER_DJANGO:
     backoffice.register(get_user_model(), UserBackofficeOpts)
-    backoffice.register(Group)
+    backoffice.register(Group, GroupBackofficeOpts)
