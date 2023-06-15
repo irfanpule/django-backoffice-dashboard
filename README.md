@@ -16,7 +16,7 @@ Django Backoffice is an application Django to easier create backoffice dashboard
         'djbackoffice',
     ]
     ```
-- Run `python manage.py collectstatic` to collect file static djf_office into project.
+- Run `python manage.py collectstatic` to collect file static djbackoffice into project.
 - Include url `djbackoffice` in your root url
     ```
     from djbackoffice.core import backoffice
@@ -64,7 +64,7 @@ class AuthorOption(BackofficeOptions):
 - clone project
 - symlink app to `demo`
   ```bash
-  ln -s [path_project_djf_office] [path_demo_djf_office]
+  ln -s [path_project_djbackoffice] [path_demo_djbackoffice]
   ```
 - create `env` development
 - active `env`
