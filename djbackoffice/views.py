@@ -16,7 +16,7 @@ from djbackoffice.settings import DJANGO_TABLES2_TEMPLATE
 class ListView(BackofficeContextMixin, BackOfficeFilterMixin, SingleTableMixin, ListView):
     table_class = SimpleTable
     model_meta = None
-    template_name = "djlakang/general_list.html"
+    template_name = "djbackoffice/general_list.html"
     fields = ()
     crud_mode = ''
 
@@ -24,21 +24,21 @@ class ListView(BackofficeContextMixin, BackOfficeFilterMixin, SingleTableMixin, 
         context = super().get_context_data(**kwargs)
         info = self.model_meta.app_label, self.model_meta.model_name
         if "c" in self.crud_mode.lower():
-            context["add_url"] = "djlakang:%s_%s_add" % info
+            context["add_url"] = "djbackoffice:%s_%s_add" % info
         else:
             context["add_url"] = None
 
         if "u" in self.crud_mode.lower():
-            context["edit_url"] = "djlakang:%s_%s_edit" % info
+            context["edit_url"] = "djbackoffice:%s_%s_edit" % info
         else:
             context["edit_url"] = None
 
         if "d" in self.crud_mode.lower():
-            context["delete_url"] = "djlakang:%s_%s_delete" % info
+            context["delete_url"] = "djbackoffice:%s_%s_delete" % info
         else:
             context["delete_url"] = None
 
-        context["detail_url"] = "djlakang:%s_%s_detail" % info
+        context["detail_url"] = "djbackoffice:%s_%s_detail" % info
         context["table_template"] = DJANGO_TABLES2_TEMPLATE
         return context
 
@@ -64,7 +64,7 @@ class CreateView(BackofficeContextMixin, CreateView):
     def get_success_url(self):
         sweetify.toast(self.request, "Success add %s" % self.model_meta.model_name, timer=5000)
         info = self.model_meta.app_label, self.model_meta.model_name
-        pattern = 'djlakang:%s_%s_list' % info
+        pattern = 'djbackoffice:%s_%s_list' % info
         return reverse_lazy(pattern)
 
 
@@ -82,7 +82,7 @@ class UpdateView(BackofficeContextMixin, UpdateView):
     def get_success_url(self):
         sweetify.toast(self.request, "Success edit %s" % self.model_meta.model_name, timer=5000)
         info = self.model_meta.app_label, self.model_meta.model_name
-        pattern = 'djlakang:%s_%s_list' % info
+        pattern = 'djbackoffice:%s_%s_list' % info
         return reverse_lazy(pattern)
 
 
@@ -102,12 +102,12 @@ class DeleteView(DeletionMixin, BaseDetailView):
     def get_success_url(self):
         sweetify.toast(self.request, "Success delete %s" % self.model_meta.model_name, timer=5000)
         info = self.model_meta.app_label, self.model_meta.model_name
-        pattern = 'djlakang:%s_%s_list' % info
+        pattern = 'djbackoffice:%s_%s_list' % info
         return reverse_lazy(pattern)
 
 
 class DetailView(BackofficeContextMixin, DetailView):
-    template_name = "djlakang/general_detail.html"
+    template_name = "djbackoffice/general_detail.html"
 
     def get_title_page(self):
         obj = self.get_object()

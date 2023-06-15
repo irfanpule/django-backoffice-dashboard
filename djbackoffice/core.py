@@ -140,9 +140,9 @@ class BackofficeOptions:
         Returns the template according to the desired number of columns
         """
         if self.form_column_style == 1:
-            return 'djlakang/partials/one-column-form.html'
+            return 'djbackoffice/partials/one-column-form.html'
         elif self.form_column_style == 2:
-            return 'djlakang/partials/two-column-form.html'
+            return 'djbackoffice/partials/two-column-form.html'
         else:
             raise BackofficeOptionException("form_column_style set using 1 or 2")
 
@@ -154,7 +154,7 @@ class Backoffice(object):
     """
     index_title = 'Backoffice'
 
-    def __init__(self, name='djlakang'):
+    def __init__(self, name='djbackoffice'):
         self._registry = {}
         self.name = name
 
@@ -186,7 +186,7 @@ class Backoffice(object):
         }
 
         request.current_app = self.name
-        return TemplateResponse(request, 'djlakang/home.html', context)
+        return TemplateResponse(request, 'djbackoffice/home.html', context)
 
     def get_urls(self):
         """
@@ -197,8 +197,8 @@ class Backoffice(object):
 
         # Admin-site views.
         admin = AdminSite()
-        admin.login_template = 'djlakang/login.html'
-        admin.logout_template = 'djlakang/login.html'
+        admin.login_template = 'djbackoffice/login.html'
+        admin.logout_template = 'djbackoffice/login.html'
 
         urlpatterns = [
             path('', self.index, name='index'),
@@ -213,7 +213,7 @@ class Backoffice(object):
 
     @property
     def urls(self):
-        return self.get_urls(), 'djlakang', self.name
+        return self.get_urls(), 'djbackoffice', self.name
 
     def get_app_menu_register(self):
         """
@@ -229,7 +229,7 @@ class Backoffice(object):
             model_dict = {
                 'name': capfirst(model._meta.verbose_name_plural),
                 'object_name': model._meta.object_name,
-                'admin_url': reverse('djlakang:%s_%s_list' % info),
+                'admin_url': reverse('djbackoffice:%s_%s_list' % info),
             }
 
             if app_label in app_dict:
