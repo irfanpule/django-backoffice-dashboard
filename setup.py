@@ -58,7 +58,7 @@ if sys.argv[-1] == 'build_pre_publish':
 
 
 setup(
-    name='django-backoffice',
+    name='djbackoffice',
     version=version,
     url='https://github.com/irfanpule/django-backoffice',
     license='MIT License',

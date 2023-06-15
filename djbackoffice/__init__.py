@@ -1,5 +1,5 @@
-__title__ = 'Django Backoffice'
-__version__ = '0.0.1'
+__title__ = 'DJBackoffice'
+__version__ = '0.0.1-alpha'
 __author__ = 'irfanpule'
 
 
