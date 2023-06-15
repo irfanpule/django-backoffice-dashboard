@@ -57,10 +57,10 @@ class AuthorOption(BackofficeOptions):
     list_per_page = 50
 ```
 
-### Thanks!
+## Thanks!
 - https://github.com/zuramai/mazer: Mazer Dashboard Template
 
-### For Contributor
+## For Contributor
 - clone project
 - symlink app to `demo`
   ```bash
@@ -70,3 +70,8 @@ class AuthorOption(BackofficeOptions):
 - active `env`
 - enter directory `demo`
 - now, you can access all command `manage.py`
+
+## TODO
+- [ ] Permission Access
+- [ ] Custom Dashboard
+- [ ] Custom Menu Sidebar
