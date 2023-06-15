@@ -18,6 +18,14 @@ def get_version(package):
     return re.search("__version__ = ['\"]([^'\"]+)['\"]", init_py).group(1)
 
 
+def get_name(package):
+    """
+    Return package version as listed in `__name__` in `init.py`.
+    """
+    init_py = open(os.path.join(package, '__init__.py')).read()
+    return re.search("__name__ = ['\"]([^'\"]+)['\"]", init_py).group(1)
+
+
 def get_packages(package):
     return [
         dirpath
@@ -58,9 +66,9 @@ if sys.argv[-1] == 'build_pre_publish':
 
 
 setup(
-    name='djbackoffice',
+    name=get_name('djbackoffice'),
     version=version,
-    url='https://github.com/irfanpule/django-backoffice',
+    url='https://github.com/irfanpule/django-backoffice-dashboard',
     license='MIT License',
     description='A simple Django app to build backoffice dashboard',
     long_description=read('README.md'),

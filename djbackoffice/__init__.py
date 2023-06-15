@@ -1,5 +1,6 @@
-__title__ = 'DJBackoffice'
-__version__ = '0.0.1-alpha'
+__title__ = 'Django Backoffice Dashboard'
+__name__ = 'django-backoffice-dashboard-alpha'
+__version__ = '0.0.1.a0'
 __author__ = 'irfanpule'
 
 
