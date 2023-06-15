@@ -42,6 +42,12 @@ class BackofficeOptions:
         """
         return [f.name for f in self.model._meta.get_fields()]
 
+    def _get_name_model(self):
+        return capfirst(self.model._meta.verbose_name_plural)
+
+    def _get_name_app(self):
+        return capfirst(apps.get_app_config(self.model._meta.app_label).verbose_name)
+
     def list_view(self, request):
         """
         CreateView to show all data of model
@@ -56,8 +62,8 @@ class BackofficeOptions:
         class_view.paginate_by = self.list_per_page
         class_view.search_fields = self.search_fields
         class_view.model_meta = self.model_meta
-        class_view.title_page = "List %s" % self.model_meta.model_name.title()
-        class_view.sub_title = "On App %s" % self.model_meta.app_label.title()
+        class_view.title_page = "List %s" % self._get_name_model()
+        class_view.sub_title = "On App %s" % self._get_name_app()
         return class_view.as_view()(request)
 
     def add_view(self, request):
@@ -69,8 +75,8 @@ class BackofficeOptions:
         class_view.backoffice = self.opts_class
         class_view.model = self.model
         class_view.model_meta = self.model_meta
-        class_view.title_page = "Add %s" % self.model_meta.model_name.title()
-        class_view.sub_title = "On App %s" % self.model_meta.app_label.title()
+        class_view.title_page = "Add %s" % self._get_name_model()
+        class_view.sub_title = "On App %s" % self._get_name_app()
         class_view.template_name = self.get_form_colum_style()
         return class_view.as_view()(request)
 
@@ -83,8 +89,8 @@ class BackofficeOptions:
         class_view.backoffice = self.opts_class
         class_view.model = self.model
         class_view.model_meta = self.model_meta
-        class_view.title_page = "Edit %s" % self.model_meta.model_name.title()
-        class_view.sub_title = "On App %s" % self.model_meta.app_label.title()
+        class_view.title_page = "Edit %s" % self._get_name_model()
+        class_view.sub_title = "On App %s" % self._get_name_app()
         class_view.template_name = self.get_form_colum_style()
         return class_view.as_view()(request, pk=pk)
 
@@ -107,7 +113,7 @@ class BackofficeOptions:
         class_view.backoffice = self.opts_class
         class_view.model = self.model
         class_view.model_meta = self.model_meta
-        class_view.sub_title = "On App %s" % self.model_meta.app_label.title()
+        class_view.sub_title = "On App %s" % self._get_name_app()
         return class_view.as_view()(request, pk=pk)
 
     def get_urls(self):
