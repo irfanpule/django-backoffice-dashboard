@@ -1,5 +1,5 @@
 __title__ = 'Django Backoffice Dashboard'
-__version__ = '0.0.1.a0'
+__version__ = '0.0.1.a1'
 __author__ = 'irfanpule'
 
 
