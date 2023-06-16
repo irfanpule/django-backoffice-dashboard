@@ -1,4 +1,9 @@
-{% load core_tags %}
+{% load djbofficetags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+{% endblock %}
 
 <section id="multiple-column-form">
     <div class="row match-height">
@@ -17,17 +22,33 @@
                                 </div>
                                 {% for field in form %}
                                     {% if field.field.widget.input_type == 'checkbox' %}
-                                        <div class="checkbox">
-                                            {{ field|addclass:'form-check-input'}}
-                                            <label for="checkbox1">{{ field.label }}</label>
-                                            <small class="text-muted">{{ field.help_text }}</small>
-                                            <small class="text-danger p-0">{{ field.errors }}</small>
+                                        <div class="col-md-12 col-12">
+                                            <div class="form-group">
+                                                <div class="checkbox">
+                                                    {{ field|addclass:'form-check-input'}}
+                                                    <label>{{ field.label }}</label>
+                                                </div>
+                                                <small class="text-muted">{{ field.help_text }}</small>
+                                                <small class="text-danger">{{ field.errors }}</small>
+                                            </div>
                                         </div>
                                     {% else %}
                                         <div class="col-md-12 col-12">
                                             <div class="form-group">
-                                                <label for="first-name-column">{{ field.label }}</label>
-                                                {{ field|addclass:'form-control' }}
+                                                <label>{{ field.label }}</label>
+                                                {{ field|addclass:'form-control'}}
+                                                {% if field|field_type == 'DateTimeInput'  %}
+                                                    <script>
+                                                        flatpickr("#{{ field.auto_id }}", {
+                                                            enableTime: true,
+                                                            dateFormat: "Y-m-d H:i",
+                                                        });
+                                                    </script>
+                                                {% elif field|field_type == 'DateInput'  %}
+                                                    <script>
+                                                        flatpickr("#{{ field.auto_id }}", {});
+                                                    </script>
+                                                {% endif %}
                                                 <small class="text-muted">{{ field.help_text }}</small>
                                                 <small class="text-danger">{{ field.errors }}</small>
                                             </div>
