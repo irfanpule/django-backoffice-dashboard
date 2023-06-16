@@ -5,22 +5,25 @@ Django Backoffice is an application Django to easier create backoffice dashboard
  
 ## Installation
 - Install django-backoffice using:
-    ```
+    ```bash
     pip install django-backoffice-dashboard-alpha
     ```
 
 - Add `djbackoffice` to your `INSTALLED_APPS` setting like this
-    ```
+    ```python
     INSTALLED_APPS = [
-        ...
+        # ... other apps
+  
         'djbackoffice',
+        'sweetify',  # djbackoffice need it
+        'django_tables2' # djbackoffice need it
     ]
     ```
 - Run `python manage.py collectstatic` to collect file static djbackoffice into project.
 - Include url `djbackoffice` in your root url
-    ```
+    ```python
     from djbackoffice.core import backoffice
-    ....
+    # .... other import
 
     urlpatterns = [
         path('admin/', admin.site.urls),

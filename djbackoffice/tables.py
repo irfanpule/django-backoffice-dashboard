@@ -8,3 +8,6 @@ class SimpleTable(tables.Table):
     actions = tables.TemplateColumn(
         template_name="djbackoffice/partials/action_row_table.html"
     )
+
+    class Meta:
+        show_header = True

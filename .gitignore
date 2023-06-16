@@ -44,3 +44,7 @@ ghostdriver.log
 ## envirotment
 env/
 venv/
+
+#dev
+demo/djbackoffice
+demo/static
